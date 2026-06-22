@@ -26,7 +26,7 @@ print(breach_rate(0.95))
 print(breach_rate(0.99))
 
 
-
+# Calculating breach rate with fitted Student-t
 df, loc, scale = t.fit(returns)
 
 z_t = t.ppf(0.01, df) * np.sqrt((df - 2) / df)

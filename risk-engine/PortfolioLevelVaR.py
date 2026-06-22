@@ -1,6 +1,5 @@
 # Importing libraries
 import yfinance as yf
-import pandas as pd
 import numpy as np
 from InverseNormal import inverseNormal
 
@@ -12,9 +11,9 @@ returns = close.pct_change().dropna()
 # Portfolio weightings
 w = np.array([1/3, 1/3, 1/3])
 
+# Creating the needed variables
 mu = returns.mean()
 Sigma = returns.cov()
-
 mu_p = w @ mu
 var_p = w @ Sigma @ w
 sigma_p = np.sqrt(var_p)
@@ -28,6 +27,7 @@ def VaR_Calc(confidence):
 print(VaR_Calc(0.95))
 print(VaR_Calc(0.99))
 
+# Investigating undiversified VaRs
 sigma_individual = np.sqrt(np.diag(Sigma))
 
 z = inverseNormal(1 - 0.95)

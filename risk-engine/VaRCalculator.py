@@ -29,6 +29,7 @@ def monte_carlo(N):
 print(monte_carlo(100_000))
 print(monte_carlo(1_000_000))
 
+# Student-t distribution VaR
 df, loc, scale = t.fit(returns)
 sims_t = t.rvs(df, loc=loc, scale=scale, size=1_000_000)
 VaR_95_t = -np.percentile(sims_t, 5)
